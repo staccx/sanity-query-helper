@@ -33,7 +33,7 @@ class SanityQueryHelper {
   ofType (type) {
     return new SanityQueryHelper(this)
       .withFilter("_type")
-      .equalTo(type)
+      .equalTo(`"${type}"`)
   }
 
   withFilter (filter) {

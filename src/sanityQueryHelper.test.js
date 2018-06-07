@@ -11,15 +11,7 @@ const getHelper = () =>
   })
 describe("Sanity SDK", () => {
   it("Should be able to use ofType", () => {
-    expect(getHelper().ofType("post").query).toBe("*[_type == post]{...}")
-  })
-
-  it("Should be able to use generic options", () => {
-    expect(
-      getHelper()
-        .withFilter("_type")
-        .equalTo("post").query
-    ).toBe("*[_type == post]{...}")
+    expect(getHelper().ofType("post").query).toBe("*[_type == \"post\"]{...}")
   })
 
   it("Should be able to use multiple values", () => {
@@ -92,13 +84,12 @@ describe("Sanity SDK", () => {
     it("Should created order", () => {
       expect(
         getHelper()
-          .withFilter("_type")
-          .equalTo("post")
+          .ofType("post")
           .withFilter("releaseYear")
           .greaterOrEqualTo(1979)
           .orderBy("releaseYear").query
       ).toBe(
-        "*[_type == post && releaseYear >= 1979] | order(releaseYear){...}"
+        "*[_type == \"post\" && releaseYear >= 1979] | order(releaseYear){...}"
       )
     })
   })
@@ -109,14 +100,14 @@ describe("Sanity SDK", () => {
         getHelper()
           .ofType("post")
           .project("title").query
-      ).toBe("*[_type == post]{title}")
+      ).toBe("*[_type == \"post\"]{title}")
     })
     it("Multiple", () => {
       expect(
         getHelper()
           .ofType("post")
           .project("_id, title, _createdAt").query
-      ).toBe("*[_type == post]{_id, title, _createdAt}")
+      ).toBe("*[_type == \"post\"]{_id, title, _createdAt}")
     })
   })
 
@@ -126,14 +117,14 @@ describe("Sanity SDK", () => {
         getHelper()
           .ofType("pages")
           .select(0, 10).query
-      ).toBe("*[_type == pages]{...}[0..10]")
+      ).toBe("*[_type == \"pages\"]{...}[0..10]")
     })
     it("Inclusive", () => {
       expect(
         getHelper()
           .ofType("pages")
           .select(0, 10, true).query
-      ).toBe("*[_type == pages]{...}[0...10]")
+      ).toBe("*[_type == \"pages\"]{...}[0...10]")
     })
   })
 
@@ -141,14 +132,13 @@ describe("Sanity SDK", () => {
     it("Should handle all", () => {
       const query =
         getHelper()
-          .withFilter("_type")
-          .equalTo("post")
+          .ofType("post")
           .withFilter("releaseYear")
           .greaterOrEqualTo(1979)
           .project("title")
           .select(0, 1000)
           .orderBy("releaseYear").query
-      expect(query).toBe("*[_type == post && releaseYear >= 1979] | order(releaseYear){title}[0..1000]")
+      expect(query).toBe("*[_type == \"post\" && releaseYear >= 1979] | order(releaseYear){title}[0..1000]")
     })
   })
 
