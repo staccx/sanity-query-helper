@@ -5,7 +5,7 @@ import resolve from "rollup-plugin-node-resolve"
 import pkg from "./package.json"
 
 export default {
-  input: "./src/export.js",
+  input: "./src/sanityQueryHelper.js",
   output: [
     {
       file: pkg.main,
