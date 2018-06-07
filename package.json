@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:staccx/sanityQueryHelper.git"
+    "url": "git+ssh://git@github.com:staccx/sanity-query-helper.git"
   },
   "main": "dist/index.js",
   "scripts": {
