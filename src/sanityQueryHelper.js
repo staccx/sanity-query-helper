@@ -6,6 +6,19 @@ const generateProjections = projections =>
 const generateSelector = selector => selector
 
 /**
+ * Helper for using SanityQueryHelper.compare
+ * @type {{equalTo: string, notEqualTo: string, lessThan: string, lessOrEqualTo: string, greaterThan: string, greaterOrEqualTo: string}}
+ */
+export const comparisons = {
+  equalTo: "==",
+  notEqualTo: "!=",
+  lessThan: "<",
+  lessOrEqualTo: "<=",
+  greaterThan: ">",
+  greaterOrEqualTo: ">="
+}
+
+/**
  * @class
  */
 class SanityQueryHelper {
@@ -64,7 +77,7 @@ class SanityQueryHelper {
    * @returns {SanityQueryHelper}
    */
   equalTo (value) {
-    return this.compare(value, "==", this.filter)
+    return this.compare(this.filter, comparisons.equalTo, value)
   }
 
   /**
@@ -73,7 +86,7 @@ class SanityQueryHelper {
    * @returns {SanityQueryHelper}
    */
   notEqualTo (value) {
-    return this.compare(value, "!=", this.filter)
+    return this.compare(this.filter, comparisons.notEqualTo, value)
   }
 
   /**
@@ -82,7 +95,7 @@ class SanityQueryHelper {
    * @returns {SanityQueryHelper}
    */
   lessThan (value) {
-    return this.compare(value, "<", this.filter)
+    return this.compare(this.filter, comparisons.lessThan, value)
   }
 
   /**
@@ -91,7 +104,7 @@ class SanityQueryHelper {
    * @returns {SanityQueryHelper}
    */
   lessOrEqualTo (value) {
-    return this.compare(value, "<=", this.filter)
+    return this.compare(this.filter, comparisons.lessOrEqualTo, value)
   }
 
   /**
@@ -100,7 +113,7 @@ class SanityQueryHelper {
    * @returns {SanityQueryHelper}
    */
   greaterThan (value) {
-    return this.compare(value, ">", this.filter)
+    return this.compare(this.filter, comparisons.greaterThan, value)
   }
 
   /**
@@ -109,7 +122,7 @@ class SanityQueryHelper {
    * @returns {SanityQueryHelper}
    */
   greaterOrEqualTo (value) {
-    return this.compare(value, ">=", this.filter)
+    return this.compare(this.filter, comparisons.greaterOrEqualTo, value)
   }
 
   /**
@@ -117,17 +130,17 @@ class SanityQueryHelper {
    * @example compare("releaseYear", "==", 2000)
    * @param value
    * @param operation
-   * @param key
+   * @param filter
    * @returns {SanityQueryHelper}
    */
-  compare (value, operation, key) {
-    if (!key) {
+  compare (filter, operation, value) {
+    if (!filter) {
       console.warn(
         "You're trying to compare without providing a filter. Always use withFilter first"
       )
       return this
     }
-    this.queryOptions.push(`${key} ${operation} ${value}`)
+    this.queryOptions.push(`${filter} ${operation} ${value}`)
     return new SanityQueryHelper(this, null)
   }
 

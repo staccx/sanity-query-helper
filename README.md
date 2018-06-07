@@ -12,7 +12,7 @@
 
 Immutable. All functions are chainable (except for send) and return a new helper.
 ```
-import SanityQueryHelper from "sanityQueryHelper"
+import SanityQueryHelper, {comparisons} from "sanityQueryHelper"
 
 const sanityHelper = new SanityQueryHelper({sanityOptions: {projectId: "project-id", dataset: "myDataSet", useCdn: true})
 
@@ -21,15 +21,17 @@ const sanityHelper = new SanityQueryHelper({sanityOptions: {projectId: "project-
 //Filters
 const filter = sanityHelper
 .ofType("post")
-.withFilter("releaseDate")
+.withFilter("releaseDate") // .compare("releaseDate", comparisons.greaterOrEqualTo, 1979)
 .greaterOrEqualTo(1979)
 .send()
 .then(useMyData) // 👈 response from sanity
 
 
-//Projections
+
+
+//Picks aka Projections
 filter
- .project("title")
+ .pick("title")
  .send()
  .then(useMyData) // 👈 response with projection
 
