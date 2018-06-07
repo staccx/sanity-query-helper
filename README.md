@@ -13,7 +13,7 @@ GROQ can be hard to grok. While GROQ is a really powerful tool, it can be a bit 
 
 Immutable. All functions are chainable (except for send) and return a new helper.
 ```js
-import SanityQueryHelper, {comparisons} from "sanity-query-helper"
+import SanityQueryHelper from "sanity-query-helper"
 
 const sanityHelper = new SanityQueryHelper({
   sanityOptions: {
@@ -28,7 +28,7 @@ const sanityHelper = new SanityQueryHelper({
 // Filters
 const filter = sanityHelper
   .ofType("post")
-  .withFilter("releaseDate") // .compare("releaseDate", comparisons.greaterOrEqualTo, 1979)
+  .withFilter("releaseDate") // .compare("releaseDate", SanityQueryHelper.comparisons.greaterOrEqualTo, 1979)
   .greaterOrEqualTo(1979)
   .send()
   .then(useMyData) // 👈 response from sanity
