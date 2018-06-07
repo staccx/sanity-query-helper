@@ -11,9 +11,10 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "BABEL_ENV=test && jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:local": "BABEL_ENV=test && jest",
     "test:watch": "jest --watch",
     "build": "rollup -c",
-    "prepublish": "yarn test && yarn build"
+    "prepublish": "yarn test:local && yarn build"
   },
   "peerDependencies": {
     "@sanity/client": "^0.132.2"
