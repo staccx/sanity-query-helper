@@ -1,4 +1,5 @@
 # Sanity Query Helper
+[![CircleCI](https://circleci.com/gh/staccx/sanityQueryHelper.svg?style=svg)](https://circleci.com/gh/staccx/sanityQueryHelper)
 [![Coverage Status](https://coveralls.io/repos/github/staccx/sanityQueryHelper/badge.svg?branch=master)](https://coveralls.io/github/staccx/sanityQueryHelper?branch=master)
 ## Description
 
