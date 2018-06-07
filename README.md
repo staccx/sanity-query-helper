@@ -1,24 +1,46 @@
-# Base
+# Sanity Query Helper
 
-## NOTE
-Project using *Base* needs to have styled-components as a dependency
+## Description
+
 
 ## Install
 
-```bash
-yarn add @staccx/base
-```
+`yarn add sanityQueryHelper`
 
 ## Usage
 
-```jsx
-import React, { Component } from "react"
+Immutable. All functions are chainable (except for send) and return a new helper.
+```
+import SanityQueryHelper from "sanityQueryHelper"
 
-import { Input } from "@staccx/base"
+const sanityHelper = new SanityQueryHelper({sanityOptions: {projectId: "project-id", dataset: "myDataSet", useCdn: true})
 
-class Example extends Component {
-  render() {
-    return <Input />
-  }
-}
+// Create query
+
+//Filters
+const filter = sanityHelper
+.ofType("post")
+.withFilter("releaseDate")
+.greaterOrEqualTo(1979)
+.send()
+.then(useMyData) // 👈 response from sanity
+
+
+//Projections
+filter
+ .project("title")
+ .send()
+ .then(useMyData) // 👈 response with projection
+
+//Select
+const select = projection
+.select(0, 10)
+.send()
+.then(data => doStuff(data)) // 👈 response will have 10 first posts (if that many exists)
+
+//Order by
+
+select
+.orderBy(releaseYear)
+.send(orderedData => use(orderedData))
 ```
