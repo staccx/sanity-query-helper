@@ -1,5 +1,5 @@
 {
-  "name": "sanityQueryHelper",
+  "name": "sanity-query-helper",
   "version": "0.1.0",
   "description": "Helper for using sanity and generating GROQ",
   "author": "StaccX",

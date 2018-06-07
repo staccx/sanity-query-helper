@@ -6,7 +6,7 @@
 
 ## Install
 
-`yarn add sanityQueryHelper`
+`yarn add sanity-query-helper`
 
 ## Usage
 
