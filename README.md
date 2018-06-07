@@ -2,7 +2,7 @@
 [![CircleCI](https://circleci.com/gh/staccx/sanityQueryHelper.svg?style=svg)](https://circleci.com/gh/staccx/sanityQueryHelper)
 [![Coverage Status](https://coveralls.io/repos/github/staccx/sanityQueryHelper/badge.svg?branch=master)](https://coveralls.io/github/staccx/sanityQueryHelper?branch=master)
 ## Description
-
+GROQ can be hard to grok. While GROQ is a really powerful tool, it can be a bit overkill for your most common Sanity operations. To make it easier to query sanity for your content, sanity-query-helper provides an API which might be easier to understand.
 
 ## Install
 
