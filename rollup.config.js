@@ -1,8 +1,9 @@
-import babel from "rollup-plugin-babel"
-import commonjs from "rollup-plugin-commonjs"
-import resolve from "rollup-plugin-node-resolve"
+// import babel from "rollup-plugin-babel"
+import commonjs from "rollup-plugin-commonjs";
+import resolve from "rollup-plugin-node-resolve";
+import babel from "rollup-plugin-babel";
 
-import pkg from "./package.json"
+import pkg from "./package.json";
 
 export default {
   input: "./src/sanityQueryHelper.js",
@@ -12,7 +13,7 @@ export default {
       format: "cjs"
     }
   ],
-  external: [],
+  external: ["@sanity/client"],
   plugins: [
     babel({
       exclude: ["node_modules/**"],
@@ -21,4 +22,4 @@ export default {
     resolve(),
     commonjs()
   ]
-}
+};

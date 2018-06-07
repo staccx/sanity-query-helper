@@ -10,8 +10,8 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest --env=jsdom --coverage",
-    "test:watch": "jest --env=jsdom --watch",
+    "test": "BABEL_ENV=test && jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:watch": "jest --watch",
     "build": "rollup -c",
     "prepublish": "yarn test && yarn build"
   },
@@ -19,12 +19,16 @@
     "@sanity/client": "^0.132.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.49",
     "@sanity/client": "^0.132.2",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^23.0.1",
-    "babel-preset-env": "2.0.0-alpha.20",
-    "jest": "^23.1.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "coveralls": "^3.0.0",
+    "jest": "^22.4.2",
+    "prettier": "^1.11.0",
     "rollup": "^0.54.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.2.1",
@@ -33,6 +37,5 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-  }
+  "dependencies": {}
 }
