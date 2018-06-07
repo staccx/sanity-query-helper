@@ -9,7 +9,7 @@ const generateSelector = selector => selector
  * Helper for using SanityQueryHelper.compare
  * @type {{equalTo: string, notEqualTo: string, lessThan: string, lessOrEqualTo: string, greaterThan: string, greaterOrEqualTo: string}}
  */
-export const comparisons = {
+const comparisons = {
   equalTo: "==",
   notEqualTo: "!=",
   lessThan: "<",
@@ -199,5 +199,5 @@ class SanityQueryHelper {
     return client.fetch(this.query)
   }
 }
-
+SanityQueryHelper.comparisons = comparisons
 export default SanityQueryHelper

@@ -1,4 +1,4 @@
-import SanityQueryHelper, { comparisons } from "./sanityQueryHelper"
+import SanityQueryHelper from "./sanityQueryHelper"
 
 const getHelper = () =>
   new SanityQueryHelper({
@@ -73,7 +73,7 @@ describe("Sanity SDK", () => {
     it("Manually with compare", () => {
       expect(
         getHelper()
-          .compare("something", comparisons.notEqualTo, 100).query
+          .compare("something", SanityQueryHelper.comparisons.notEqualTo, 100).query
       ).toBe("*[something != 100]{...}")
     })
 
