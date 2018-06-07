@@ -99,14 +99,14 @@ describe("Sanity SDK", () => {
       expect(
         getHelper()
           .ofType("post")
-          .project("title").query
+          .pick("title").query
       ).toBe("*[_type == \"post\"]{title}")
     })
     it("Multiple", () => {
       expect(
         getHelper()
           .ofType("post")
-          .project("_id, title, _createdAt").query
+          .pick("_id, title, _createdAt").query
       ).toBe("*[_type == \"post\"]{_id, title, _createdAt}")
     })
   })
@@ -135,7 +135,7 @@ describe("Sanity SDK", () => {
           .ofType("post")
           .withFilter("releaseYear")
           .greaterOrEqualTo(1979)
-          .project("title")
+          .pick("title")
           .select(0, 1000)
           .orderBy("releaseYear").query
       expect(query).toBe("*[_type == \"post\" && releaseYear >= 1979] | order(releaseYear){title}[0..1000]")
@@ -147,7 +147,7 @@ describe("Sanity SDK", () => {
       const helper = getHelper()
         .withFilter("_type")
         .equalTo("post")
-        .project("title")
+        .pick("title")
 
       helper.send = jest.fn()
 

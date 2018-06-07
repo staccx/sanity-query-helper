@@ -143,12 +143,12 @@ class SanityQueryHelper {
   }
 
   /**
-   * Picks fields from result. In GROQ-speak this is called projections
+   * Picks fields from result. In GROQ-speak this is called projections -> Soz, Sanity, project was not an intuitive verb here
    * @link https://www.sanity.io/docs/data-store/how-queries-work#projections
-   * @param projections
+   * @param {string} projections - Which fields to pick. Comma delimited
    * @returns {SanityQueryHelper}
    */
-  project (projections) {
+  pick (projections) {
     this.projections = projections
     return new SanityQueryHelper(this, null)
   }
