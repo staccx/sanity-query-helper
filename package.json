@@ -1,6 +1,6 @@
 {
   "name": "sanity-query-helper",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Helper for using sanity and generating GROQ",
   "author": "StaccX",
   "license": "MIT",
