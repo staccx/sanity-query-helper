@@ -190,13 +190,16 @@ class SanityQueryHelper {
     )}`
   }
 
+  get client() {
+    return sanityClient(this.sanityOptions)
+  }
+
   /**
    * Initialize sanityClient and send the finished query.
    * @returns {Promise}
    */
   send () {
-    const client = sanityClient(this.sanityOptions)
-    return client.fetch(this.query)
+    return this.client.fetch(this.query)
   }
 }
 SanityQueryHelper.comparisons = comparisons
