@@ -126,6 +126,16 @@ class SanityQueryHelper {
   }
 
   /**
+   * Used to create filters
+   * @param filter
+   * @returns {SanityQueryHelper}
+   */
+  doCompare(filter) {
+    this.queryOptions.push(`${filter}`)
+    return new SanityQueryHelper(this, null)
+  }
+
+  /**
    * Used to create the filters.
    * @example compare("releaseYear", "==", 2000)
    * @param value
@@ -140,8 +150,7 @@ class SanityQueryHelper {
       )
       return this
     }
-    this.queryOptions.push(`${filter} ${operation} ${value}`)
-    return new SanityQueryHelper(this, null)
+    return this.doCompare(`${filter} ${operation} ${value}`)
   }
 
   /**

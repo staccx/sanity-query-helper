@@ -25,6 +25,11 @@ describe("Sanity SDK", () => {
   })
 
   describe("Compare", () => {
+    it("Do compare", () => {
+      expect(
+        getHelper()
+        .doCompare("something > 100").query).toBe("*[something > 100]{...}")
+    })
     it("Greater Than", () => {
       expect(
         getHelper()
